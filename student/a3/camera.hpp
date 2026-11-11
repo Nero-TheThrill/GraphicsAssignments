@@ -16,9 +16,9 @@ inline Mat3 viewMatrix(const Camera& c)
     return Mat3::identity();
 }
 
-inline Mat3 cameraToNdc(const Camera& c, float aspect)
+inline Mat3 cameraToClipSpace(const Camera& c, float aspect)
 {
-    // TODO A3.2: map visible width = height * aspect and height to [-1, 1].
+    // TODO A3.2: map the visible camera rectangle to clip-space xy in [-1, 1] with w = 1.
     // Hint: Reuse A2 scaling. Map each camera half-extent to 1 in NDC.
     return Mat3::identity();
 }
@@ -42,7 +42,7 @@ inline void uploadCamera(GLuint program, const Camera& c, int width, int height)
     if (width <= 0 || height <= 0) return;
 
     // TODO A3.5: compute aspect from framebuffer pixels;
-    // Hint: Use viewMatrix, cameraToNdc, glGetUniformLocation, and glProgramUniformMatrix3fv. Use floating-point division for aspect and GL_FALSE for transpose.
-    // upload uView and uCameraToNdc.
+    // Hint: Use viewMatrix, cameraToClipSpace, glGetUniformLocation, and glProgramUniformMatrix3fv. Use floating-point division for aspect and GL_FALSE for transpose.
+    // upload uView and uCameraToClipSpace.
     // Matrices are column-major.
 }
